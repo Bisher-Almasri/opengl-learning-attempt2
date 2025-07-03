@@ -11,12 +11,13 @@ find_package(PkgConfig REQUIRED)
 pkg_search_module(GLFW REQUIRED glfw3)
 
 set(SOURCES
-    src/main.cpp
-    include/glad/glad.c
+        src/main.cpp
+        include/glad/glad.c
         src/Shader.cpp
         src/Shader.hpp
         include/stb/stb_image.h
         include/stb/stb_image.c
+#        src/test.cpp
 )
 
 add_executable(AtemptTwo ${SOURCES})
@@ -24,9 +25,9 @@ add_executable(AtemptTwo ${SOURCES})
 include_directories(${GLFW_INCLUDE_DIRS})
 
 target_link_libraries(AtemptTwo ${GLFW_LIBRARIES})
-if(POLICY CMP0072)
+if (POLICY CMP0072)
     cmake_policy(SET CMP0072 NEW)
-endif()
+endif ()
 
 find_package(OpenGL REQUIRED)
 target_link_libraries(AtemptTwo ${OPENGL_gl_LIBRARY} dl)
